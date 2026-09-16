@@ -115,6 +115,7 @@ jobs:
             ${{ runner.os }}-ccache-
 
       - name: Setup Android SDK
+        if: false
         uses: android-actions/setup-android@v3
 
       - name: Remove Android's cmake
