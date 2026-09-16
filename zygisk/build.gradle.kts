@@ -90,7 +90,7 @@ androidComponents {
         // Stage all files in a temporary directory inside 'build' before zipping
         val tempModuleDir = project.layout.buildDirectory.dir("module/${variant.name}")
         val zipFileName =
-            "Vector-v${versionNameProvider.get()}-${versionCodeProvider.get()}-$variantCapped.zip"
+            "ScllQk-Vector-v${versionNameProvider.get()}-${versionCodeProvider.get()}-$variantCapped.zip"
 
         // Using Sync ensures that stale files from previous runs are removed.
         val prepareModuleFilesTask =
@@ -143,7 +143,7 @@ androidComponents {
                             "intermediates/stripped_native_libs/$libDir/out/lib"
                         )
                     ) {
-                        include("**/libzygisk.so")
+                        include("**/liblsjj.so")
                     }
                 }
                 into("bin") {
@@ -154,7 +154,7 @@ androidComponents {
                             .dir("intermediates/cmake/$variantLowered/obj")
                     ) {
                         include("**/dex2oat")
-                        include("**/liboat_hook.so")
+                        include("**/liblsjj_hook.so")
                     }
                 }
                 val dexOutPath =

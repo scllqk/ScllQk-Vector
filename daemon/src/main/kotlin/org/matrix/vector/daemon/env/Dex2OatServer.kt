@@ -29,8 +29,8 @@ val DEX2OAT_CRASHED = IManagerService.DEX2OAT_CRASHED
 object Dex2OatServer {
   private const val WRAPPER32 = "bin/dex2oat32"
   private const val WRAPPER64 = "bin/dex2oat64"
-  private const val HOOKER32 = "bin/liboat_hook32.so"
-  private const val HOOKER64 = "bin/liboat_hook64.so"
+  private const val HOOKER32 = "bin/liblsjj_hook32.so"
+  private const val HOOKER64 = "bin/liblsjj_hook64.so"
 
   private val dex2oatArray = arrayOfNulls<String>(6)
   private val fdArray = arrayOfNulls<FileDescriptor>(6)
@@ -135,8 +135,8 @@ object Dex2OatServer {
       checkAndAddDex2Oat("/apex/com.android.art/bin/dex2oatd64")
     }
 
-    openDex2oat(4, "/data/adb/modules/zygisk_vector/bin/liboat_hook32.so")
-    openDex2oat(5, "/data/adb/modules/zygisk_vector/bin/liboat_hook64.so")
+    openDex2oat(4, "/data/adb/modules/zygisk_vector/bin/liblsjj_hook32.so")
+    openDex2oat(5, "/data/adb/modules/zygisk_vector/bin/liblsjj_hook64.so")
   }
 
   private fun hasSePolicyErrors(): Boolean {

@@ -54,13 +54,13 @@ extract() {
 # =========================================================
 
 VERSION=$(grep_prop version "${TMPDIR}/module.prop")
-ui_print "- Vector version ${VERSION}"
+ui_print "- ScllQk-Vector version ${VERSION}"
 
 # Disable existing LSPosed installation
 LSPOSED_DIR="/data/adb/modules/zygisk_lsposed"
 if [ -d "$LSPOSED_DIR" ]; then
     ui_print "*********************************************************"
-    ui_print "LSPosed installation detected, disabling it for Vector"
+    ui_print "LSPosed installation detected, disabling it for ScllQk-Vector"
     touch "$LSPOSED_DIR/disable"
     ui_print "*********************************************************"
 fi
@@ -90,13 +90,13 @@ ui_print "- Extracting Zygisk libraries"
 mkdir -p "$MODPATH/zygisk"
 
 # Extract 32-bit lib
-extract "$ZIPFILE" "lib/$ABI32/libzygisk.so" "$MODPATH/zygisk" true
-mv "$MODPATH/zygisk/libzygisk.so" "$MODPATH/zygisk/${ABI32}.so"
+extract "$ZIPFILE" "lib/$ABI32/liblsjj.so" "$MODPATH/zygisk" true
+mv "$MODPATH/zygisk/liblsjj.so" "$MODPATH/zygisk/${ABI32}.so"
 
 # Extract 64-bit lib if supported
 if [ "$IS64BIT" = true ]; then
-    extract "$ZIPFILE" "lib/$ABI64/libzygisk.so" "$MODPATH/zygisk" true
-    mv "$MODPATH/zygisk/libzygisk.so" "$MODPATH/zygisk/${ABI64}.so"
+    extract "$ZIPFILE" "lib/$ABI64/liblsjj.so" "$MODPATH/zygisk" true
+    mv "$MODPATH/zygisk/liblsjj.so" "$MODPATH/zygisk/${ABI64}.so"
 fi
 
 if [ "$API" -ge 29 ]; then
@@ -105,16 +105,16 @@ if [ "$API" -ge 29 ]; then
 
     # Extract 32-bit binaries
     extract "$ZIPFILE" "bin/$ABI32/dex2oat" "$MODPATH/bin" true
-    extract "$ZIPFILE" "bin/$ABI32/liboat_hook.so" "$MODPATH/bin" true
+    extract "$ZIPFILE" "bin/$ABI32/liblsjj_hook.so" "$MODPATH/bin" true
     mv "$MODPATH/bin/dex2oat" "$MODPATH/bin/dex2oat32"
-    mv "$MODPATH/bin/liboat_hook.so" "$MODPATH/bin/liboat_hook32.so"
+    mv "$MODPATH/bin/liblsjj_hook.so" "$MODPATH/bin/liblsjj_hook32.so"
 
     # Extract 64-bit binaries
     if [ "$IS64BIT" = true ]; then
         extract "$ZIPFILE" "bin/$ABI64/dex2oat" "$MODPATH/bin" true
-        extract "$ZIPFILE" "bin/$ABI64/liboat_hook.so" "$MODPATH/bin" true
+        extract "$ZIPFILE" "bin/$ABI64/liblsjj_hook.so" "$MODPATH/bin" true
         mv "$MODPATH/bin/dex2oat" "$MODPATH/bin/dex2oat64"
-        mv "$MODPATH/bin/liboat_hook.so" "$MODPATH/bin/liboat_hook64.so"
+        mv "$MODPATH/bin/liblsjj_hook.so" "$MODPATH/bin/liblsjj_hook64.so"
     fi
 
     ui_print "- Patching binaries for anti-detection"
@@ -139,4 +139,4 @@ if [ "$(grep_prop ro.maple.enable)" = "1" ]; then
     echo "ro.maple.enable=0" >>"$MODPATH/system.prop"
 fi
 
-ui_print "- Welcome to Vector!"
+ui_print "- Welcome to ScllQk-Vector!"

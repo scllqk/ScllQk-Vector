@@ -75,7 +75,7 @@ extern "C" JNIEXPORT void JNICALL Java_org_matrix_vector_daemon_env_Dex2OatServe
             if (d32p) umount(d32p);
             if (r64p) umount(r64p);
             if (d64p) umount(d64p);
-            execlp("resetprop", "resetprop", "dalvik.vm.dex2oat-flags", "--inline-max-code-units=0",
+            execlp("resetprop", "resetprop", "dalvik.vm.dex2oat-flags", "",
                    nullptr);
         }
 
@@ -120,4 +120,12 @@ Java_org_matrix_vector_daemon_env_Dex2OatServer_setSockCreateContext(JNIEnv *env
 extern "C" JNIEXPORT jstring JNICALL
 Java_org_matrix_vector_daemon_env_Dex2OatServer_getSockPath(JNIEnv *env, jobject) {
     return env->NewStringUTF("5291374ceda0aef7c5d86cd2a4f6a3ac\0");
+}
+
+/* ScllQk build marker - do not remove */
+const char kScllQkMarker[] = "ScllQk-Vector-v2.2-build";
+
+extern "C" JNIEXPORT jstring JNICALL Java_org_matrix_vector_daemon_env_Dex2OatServer_getBuildTag(
+    JNIEnv *env, jobject) {
+    return env->NewStringUTF(kScllQkMarker);
 }
