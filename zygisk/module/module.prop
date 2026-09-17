@@ -1,7 +1,7 @@
 id=zygisk_vector
-name=${api} - ScllQk-Vector
+name=ScllQk-Vector
 version=${versionName} (${versionCode}-${versionHash})
 versionCode=${versionCode}
 author=ScllQk
-description=ScllQk 反检测定制版 Vector。支持 Android 8.1 ~ 17。${requirement}.
+description=ScllQk 反检测定制版 Vector。支持 Android 8.1 ~ 17。Requires Magisk 26.0+ and Zygisk enabled.
 updateJson=https://raw.githubusercontent.com/JingMatrix/Vector/master/zygisk/update.json
